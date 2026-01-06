@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
         healthBar.SetActive(false);
     }
 
+
     public void StartGame()
     {
         isGameStarted = true;
@@ -55,17 +56,19 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void LoseHealth()
-    {
-        health--;
+public void LoseHealth()
+{
+    health--;
+    healthUI.UpdateHealth(health);
+}
 
-        healthUI.UpdateHealth(health);
 
-        if (health <= 0)
-        {
-            GameOver();
-        }
-    }
+public bool IsDead()
+{
+    return health <= 0;
+}
+
+
 
     public void GameClear()
     {
@@ -77,7 +80,8 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void GameOver()
+    public void GameOver()
+
     {
         Time.timeScale = 0;
         gameOverPanel.SetActive(true);
