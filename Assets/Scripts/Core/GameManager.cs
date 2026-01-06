@@ -51,6 +51,9 @@ public void LoseHealth()
     health--;
     healthUI.UpdateHealth(health);
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 public bool IsDead()
@@ -72,6 +75,9 @@ public bool IsDead()
 
 
     public void GameOver()
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     {
         Time.timeScale = 0;

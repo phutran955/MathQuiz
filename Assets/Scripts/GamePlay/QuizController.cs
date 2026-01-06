@@ -36,6 +36,9 @@ public class QuizController : MonoBehaviour
         }
         
         if(ShowAnswer == false)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         timer -= Time.deltaTime;
 
