@@ -28,18 +28,24 @@ public class QuizController : MonoBehaviour
 
     void Update()
     {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Phu_feature
         if (!GameManager.Instance.isGameStarted)
         {
             return;
         }
+<<<<<<< HEAD
         
         if(ShowAnswer == false)
 <<<<<<< Updated upstream
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Phu_feature
         timer -= Time.deltaTime;
 
         timerUI.UpdateTime(timer, timeLimit);
@@ -121,7 +127,11 @@ public class QuizController : MonoBehaviour
         currentIndex++;
 
         if (currentIndex >= database.questions.Count)
-            currentIndex = 0;
+        {
+            GameManager.Instance.GameClear();
+            return;
+        }
+
 
         LoadQuestion();
     }
