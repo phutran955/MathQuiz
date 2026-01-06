@@ -23,6 +23,10 @@ public class QuizController : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.Instance.isGameStarted)
+        {
+            return;
+        }
         timer -= Time.deltaTime;
 
         timerUI.UpdateTime(timer, timeLimit);
@@ -63,7 +67,11 @@ public class QuizController : MonoBehaviour
         currentIndex++;
 
         if (currentIndex >= database.questions.Count)
-            currentIndex = 0;
+        {
+            GameManager.Instance.GameClear();
+            return;
+        }
+
 
         LoadQuestion();
     }

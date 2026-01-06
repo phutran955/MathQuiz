@@ -25,6 +25,36 @@ public class MockData : MonoBehaviour
                 question = "2 + 5 = ?",
                 answers = new string[] {"5", "6", "7", "8"},
                 correctIndex = 2
+            },
+            new QuestionData()
+            {
+                question = "Joe what?",
+                answers = new string[] {"mama", "papa", "daddy", "mommy"},
+                correctIndex = 0
+            },
+            new QuestionData()
+            {
+                question = "1 + 2 =?",
+                answers = new string[] {"2", "3", "1", "5"},
+                correctIndex = 1
+            },
+             new QuestionData()
+            {
+                question = "1 + 0 =?",
+                answers = new string[] {"2", "3", "1", "5"},
+                correctIndex = 2
+            },
+             new QuestionData()
+            {
+                question = "1 + 4 =?",
+                answers = new string[] {"2", "3", "1", "5"},
+                correctIndex = 3
+            },
+             new QuestionData()
+            {
+                question = "1 + 2 =?",
+                answers = new string[] {"2", "3", "1", "5"},
+                correctIndex = 1
             }
         };
     }
