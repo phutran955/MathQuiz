@@ -42,9 +42,7 @@ public class GameManager : MonoBehaviour
         healthBar.SetActive(false);
     }
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
+
     public void StartGame()
     {
         isGameStarted = true;
@@ -57,56 +55,21 @@ public class GameManager : MonoBehaviour
         healthBar.SetActive(true);
     }
 
-
->>>>>>> Phu_feature
-    public void LoseHealth()
-    {
-        health--;
-=======
-    public void StartGame()
-    {
-        isGameStarted = true;
-        Time.timeScale = 1;
-
-        startPanel.SetActive(false);
-        answerPanel.SetActive(true);
-        answerText.SetActive(true);
-        timerUI.SetActive(true);
-        healthBar.SetActive(true);
-    }
-
-<<<<<<< HEAD
 
 public void LoseHealth()
 {
     health--;
     healthUI.UpdateHealth(health);
 }
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
 
 public bool IsDead()
 {
     return health <= 0;
 }
 
-<<<<<<< Updated upstream
-=======
-    public void GameClear()
-    {
-        Time.timeScale = 0;
-        gameClearPanel.SetActive(true);
-        answerPanel.SetActive(false);
-        answerText.SetActive(false);
-        timerUI.SetActive(false);
-    }
 
 
->>>>>>> Phu_feature
-    void GameOver()
-=======
     public void GameClear()
     {
         Time.timeScale = 0;
@@ -118,10 +81,7 @@ public bool IsDead()
 
 
     public void GameOver()
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
     {
         Time.timeScale = 0;
         gameOverPanel.SetActive(true);
