@@ -1,5 +1,8 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using System.Collections;
 
 public class QuizController : MonoBehaviour
 {
@@ -14,6 +17,8 @@ public class QuizController : MonoBehaviour
     private MockData database;
     private int currentIndex;
 
+    bool ShowAnswer = false;
+
     void Start()
     {
         database = FindFirstObjectByType<MockData>();
@@ -23,6 +28,15 @@ public class QuizController : MonoBehaviour
 
     void Update()
     {
+<<<<<<< Updated upstream
+=======
+        if (!GameManager.Instance.isGameStarted)
+        {
+            return;
+        }
+        
+        if(ShowAnswer == false)
+>>>>>>> Stashed changes
         timer -= Time.deltaTime;
 
         timerUI.UpdateTime(timer, timeLimit);
@@ -37,7 +51,16 @@ public class QuizController : MonoBehaviour
 
     void LoadQuestion()
     {
+        ShowAnswer = false;
         timer = timeLimit;
+
+            EventSystem.current.SetSelectedGameObject(null);
+
+    for (int i = 0; i < 4; i++)
+    {
+        Button btn = answerButtons[i].GetComponent<Button>();
+        btn.interactable = true;
+    }
 
         QuestionData q = database.questions[currentIndex];
         questionText.text = q.question;
@@ -50,13 +73,45 @@ public class QuizController : MonoBehaviour
 
     public void CheckAnswer(int index)
     {
-        if (index != database.questions[currentIndex].correctIndex)
+        if(ShowAnswer) return;
+
+        StartCoroutine(ShowAnswerAndNext(index));
+    }
+
+    IEnumerator ShowAnswerAndNext(int selectedIndex)
+{
+    ShowAnswer = true;
+
+    // Khóa nút
+    for (int i = 0; i < answerButtons.Length; i++)
+    {
+        answerButtons[i].GetComponent<Button>().interactable = false;
+    }
+
+    int correctIndex = database.questions[currentIndex].correctIndex;
+
+    // Đáp án đúng -> xanh
+    answerButtons[correctIndex].SetColor(Color.green);
+
+    // Nếu chọn sai -> đỏ
+    if (selectedIndex != correctIndex)
+    {
+        answerButtons[selectedIndex].SetColor(Color.red);
+        GameManager.Instance.LoseHealth();
+    }
+
+    // Delay 1.5s
+    yield return new WaitForSeconds(1.5f);
+
+    if (GameManager.Instance.IsDead())
         {
-            GameManager.Instance.LoseHealth();
+            GameManager.Instance.GameOver();
+            yield break;
         }
 
-        NextQuestion();
-    }
+    NextQuestion();
+}
+
 
     void NextQuestion()
     {
@@ -70,6 +125,9 @@ public class QuizController : MonoBehaviour
 
     public void ResetQuiz()
     {
+        StopAllCoroutines();
+        ShowAnswer = false;
+
         currentIndex = 0;
         LoadQuestion();
     }

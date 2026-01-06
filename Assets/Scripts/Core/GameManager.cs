@@ -28,19 +28,51 @@ public class GameManager : MonoBehaviour
         healthUI.UpdateHealth(health);
     }
 
+<<<<<<< Updated upstream
     public void LoseHealth()
     {
         health--;
+=======
+    public void StartGame()
+    {
+        isGameStarted = true;
+        Time.timeScale = 1;
 
-        healthUI.UpdateHealth(health);
-
-        if (health <= 0)
-        {
-            GameOver();
-        }
+        startPanel.SetActive(false);
+        answerPanel.SetActive(true);
+        answerText.SetActive(true);
+        timerUI.SetActive(true);
+        healthBar.SetActive(true);
     }
 
+
+public void LoseHealth()
+{
+    health--;
+    healthUI.UpdateHealth(health);
+}
+>>>>>>> Stashed changes
+
+public bool IsDead()
+{
+    return health <= 0;
+}
+
+<<<<<<< Updated upstream
     void GameOver()
+=======
+    public void GameClear()
+    {
+        Time.timeScale = 0;
+        gameClearPanel.SetActive(true);
+        answerPanel.SetActive(false);
+        answerText.SetActive(false);
+        timerUI.SetActive(false);
+    }
+
+
+    public void GameOver()
+>>>>>>> Stashed changes
     {
         Time.timeScale = 0;
         gameOverPanel.SetActive(true);
